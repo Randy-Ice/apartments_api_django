@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView, RetrieveAPIView, \
-    UpdateAPIView, ListCreateAPIView
+from rest_framework.generics import  RetrieveUpdateDestroyAPIView, \
+     ListCreateAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
 
-from .models import Apartment, Comments
+from .models import Apartment, Note, Address, Activities, PointsOfInterests, Comments
 from .permissions import IsAdminOrReadOnly, IsAuthorOrReadOnly
-from .serializers import SimpleApartmentSerializer, DetailedApartmentSerializer, CommentsSerializer
+from .serializers import  DetailedApartmentSerializer, CommentsSerializer
 
 
 # Create your views here.
