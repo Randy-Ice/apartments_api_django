@@ -52,4 +52,4 @@ class AddressSerializer(serializers.ModelSerializer):
 class NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Note
-        fields = ['id', 'apartment', 'description']
+        fields = ['apartment', 'description']
