@@ -10,7 +10,9 @@ class IsAdminOrReadOnly(permissions.BasePermission):
     def has_permission(self, request, view):
         if request.method in permissions.SAFE_METHODS:
             return True
-        return request.user.is_superuser
+        if request.method == 'POST' or "PATCH":
+            return request.user.is_superuser
+        return False
 
 class IsAuthorOrReadOnly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
