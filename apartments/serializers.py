@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
-from apartments.models import Apartment, Activities, Comments
+from apartments.models import Apartment, Activities, Comments, PointsOfInterests, Address, Note
 
 
 class PointsOfInterestsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Apartment
+        model = PointsOfInterests
         fields = 'id', 'name'
 class ActivitiesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -43,3 +43,13 @@ class CommentsSerializer(serializers.ModelSerializer):
             'created_at',
         ]
         read_only_fields = ['created_at', "name"]
+
+class AddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = ['id', 'location']
+
+class NoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Note
+        fields = ['id', 'apartment', 'description']
