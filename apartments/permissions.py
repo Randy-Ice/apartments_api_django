@@ -6,13 +6,15 @@ from rest_framework import permissions
 #             return True
 #         return obj.user == request.user
 
+
+
+
 class IsAdminOrReadOnly(permissions.BasePermission):
     def has_permission(self, request, view):
-        if request.method in permissions.SAFE_METHODS:
+        if request.method in permissions.SAFE_METHODS:  # Allows GET, HEAD, OPTIONS for everyone
             return True
-        if request.method == 'POST' or "PATCH":
-            return request.user.is_superuser
-        return False
+        return request.user.is_staff  # Only staff/admin users can create, edit, or delete
+
 
 class IsAuthorOrReadOnly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
